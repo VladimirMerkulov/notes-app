@@ -7,11 +7,13 @@ import {HttpClientInMemoryWebApiModule, InMemoryDbService} from 'angular-in-memo
 
 import { NotesComponent } from './notes/notes.component';
 import {InMemoryDataService} from './InMemoryDataService';
+import { SectionsComponent } from './sections/sections.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotesComponent
+    NotesComponent,
+    SectionsComponent
   ],
   imports: [
     BrowserModule,

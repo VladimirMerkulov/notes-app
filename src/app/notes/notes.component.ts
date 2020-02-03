@@ -4,7 +4,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {build$} from "protractor/built/element";
 import {Observable} from "rxjs";
 import {Note} from '../Note';
-import {NotesService} from "../notes.service";
+import {NotesService} from "./notes.service";
 
 @Component({
   selector: 'app-notes',
