@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class NotesService {
-  notesUrl: string = 'localhost:8080/server.js'
+  notesUrl: string = 'api/notes'
 
   getNotes(): Observable<Note[]> {
     return this.http.get<Note[]>(this.notesUrl);

@@ -26,11 +26,12 @@ export class NotesComponent implements OnInit {
   }
 
   remove(idx) {
-    this.notes.splice(idx);
+    this.notes.splice(idx,1);
   }
 
   getNotes() : void{
-    this.notesService.getNotes().subscribe(notes => this.notes);
+    this.notesService.getNotes().subscribe(notes =>{ this.notes = notes; console.dir(this.notes)}
+    );
   }
 
   ngOnInit() {

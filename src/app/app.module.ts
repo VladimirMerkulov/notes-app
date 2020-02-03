@@ -3,8 +3,10 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {HttpClientInMemoryWebApiModule, InMemoryDbService} from 'angular-in-memory-web-api';
 
 import { NotesComponent } from './notes/notes.component';
+import {InMemoryDataService} from './InMemoryDataService';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { NotesComponent } from './notes/notes.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [],
   bootstrap: [AppComponent]
