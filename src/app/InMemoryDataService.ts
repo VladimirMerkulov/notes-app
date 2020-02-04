@@ -21,9 +21,9 @@ export class InMemoryDataService implements InMemoryDbService
     ];
 
     const sections = [
-      { id: 1, name: 'work' },
-      { id: 2, name: 'home' },
-      { id: 3, name: 'diff' },
+      { id: 1, title: 'work' },
+      { id: 2, title: 'home' },
+      { id: 3, title: 'diff' },
     ];
 
     const users = [

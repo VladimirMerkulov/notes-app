@@ -16,8 +16,13 @@ export class SectionsComponent implements OnInit {
 
   }
 
-  getSections(): Subscribable<Section[]> {
-    return this.http.getSections();
+  getSections(): void {
+    this.http.getSections().subscribe((sections) => {
+      this.sections = sections;
+      if (!this.activeSection && this.sections.length > 0) {
+        this.showSection(this.sections[0]);
+      }
+    });
   }
 
   showSection(section: Section) {
@@ -25,7 +30,7 @@ export class SectionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getSections()
+    this.getSections();
   }
 
 }

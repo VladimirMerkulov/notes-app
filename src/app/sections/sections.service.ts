@@ -7,10 +7,10 @@ import {Section} from './Section';
   providedIn : 'root'
 })
 export class SectionsService {
-  serviceURL : 'api/services'
+  serviceUrl = 'api/sections';
   constructor(private http : HttpClient) {
   }
   getSections():Subscribable<Section[]>{
-    return this.http.get<Section[]>(this.serviceURL)
+    return this.http.get<Section[]>(this.serviceUrl)
   }
 }
