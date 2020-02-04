@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {HttpClientModule} from "@angular/common/http";
-import {build$} from "protractor/built/element";
-import {Observable} from "rxjs";
+import {HttpClient} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
+import {build$} from 'protractor/built/element';
+import {Observable} from 'rxjs';
 import {Note} from '../Note';
-import {NotesService} from "./notes.service";
+import {NotesService} from './notes.service';
 
 @Component({
   selector: 'app-notes',
@@ -14,24 +14,35 @@ import {NotesService} from "./notes.service";
 export class NotesComponent implements OnInit {
 
   notes: Note[] = [];
-  text : string;
+  text: string;
+  section: string = "work";
 
-  constructor(private notesService :NotesService) {
+  constructor(private notesService: NotesService) {
   }
 
-  add() {
-    const note = {text: this.text};
-    this.notes.push(note);
-    this.text = "";
+  add(noteText: HTMLTextAreaElement) {
+    const note = {
+      text: noteText.value,
+      section: this.section
+    };
+    noteText.value = '';
+  //  this.addNote(note);
+  }
+
+  addNote() {
+
   }
 
   remove(idx) {
-    this.notes.splice(idx,1);
+    this.notes.splice(idx, 1);
   }
 
-  getNotes() : void{
-    this.notesService.getNotes().subscribe(notes =>{ this.notes = notes; console.dir(this.notes)}
-    );
+  getNotes(): void {
+    this.notesService.getNotes(this.section).subscribe(notes => {
+        this.notes = notes;
+      }
+    )
+    ;
   }
 
   ngOnInit() {
