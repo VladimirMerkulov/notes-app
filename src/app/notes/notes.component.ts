@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {HttpClientModule} from '@angular/common/http';
 import {build$} from 'protractor/built/element';
@@ -11,7 +11,7 @@ import {NotesService} from './notes.service';
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.css']
 })
-export class NotesComponent implements OnInit {
+export class NotesComponent implements  OnChanges {
   notes: Note[] = [];
   text: string;
 
@@ -27,11 +27,12 @@ export class NotesComponent implements OnInit {
       section: this.section
     };
     noteText.value = '';
-  //  this.addNote(note);
+    this.addNote(note);
   }
 
-  addNote() {
-
+  addNote(note : Note) {
+      this.notesService.addNote(note);
+      this.notes.push(note);
   }
 
   remove(idx) {
@@ -39,6 +40,7 @@ export class NotesComponent implements OnInit {
   }
 
   getNotes(): void {
+    console.log('Notes Active section: ', this.section)
     this.notesService.getNotes(this.section).subscribe(notes => {
         this.notes = notes;
       }
@@ -46,8 +48,9 @@ export class NotesComponent implements OnInit {
     ;
   }
 
-  ngOnInit() {
+  ngOnChanges() {
     this.getNotes();
   }
+
 
 }

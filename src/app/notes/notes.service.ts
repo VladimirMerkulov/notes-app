@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Note} from '../Note';
-import {Observable} from 'rxjs';
+import {Observable, Subscribable} from 'rxjs';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Section} from '../sections/Section';
 import {filter} from 'rxjs/operators';
@@ -15,6 +15,10 @@ export class NotesService {
     return this.http.get<Note[]>(this.notesUrl, sectionTitle ? {
       params: new HttpParams().set('section', sectionTitle)
     } : {});
+  }
+
+  addNote(note: Note): void {
+    this.http.post(this.notesUrl, note).subscribe(response => console.log('note sent, response:', response));
   }
 
   constructor(private    http: HttpClient) {
