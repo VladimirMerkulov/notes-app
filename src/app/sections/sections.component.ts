@@ -12,12 +12,28 @@ export class SectionsComponent implements OnInit {
   sections: Section[] = [];
   activeSection: string;
 
-  constructor(private http: SectionsService) {
+  constructor(private sectionsService: SectionsService) {
 
   }
 
+  addSection(newSection: HTMLInputElement) {
+    const newTitle = newSection.value;
+    if (!newTitle) {
+      return;
+    }
+
+    //check for duplicates
+    if (this.sections.map(s => s.title).find(t => t === newTitle)
+    ) {
+      return;
+    }
+    const section: Section = {title: newTitle};
+    this.sections.unshift(section);
+    this.sectionsService.writeSections(this.sections).subscribe();
+  }
+
   getSections(): void {
-    this.http.getSections().subscribe((sections) => {
+    this.sectionsService.getSections().subscribe((sections) => {
       this.sections = sections;
       if (!this.activeSection && this.sections.length > 0) {
         this.showSection(this.sections[0]);
