@@ -1,13 +1,14 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
-import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule, InMemoryDbService} from 'angular-in-memory-web-api';
+import {DragDropModule} from '@angular/cdk/drag-drop'
 
-import { NotesComponent } from './notes/notes.component';
+import {NotesComponent} from './notes/notes.component';
 import {InMemoryDataService} from './InMemoryDataService';
-import { SectionsComponent } from './sections/sections.component';
+import {SectionsComponent} from './sections/sections.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SectionsComponent } from './sections/sections.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
