@@ -16,7 +16,7 @@ export class SectionsComponent implements OnInit {
 
   }
 
-  addSection(newSection: HTMLInputElement) {
+    addSection (newSection: HTMLInputElement) {
     const newTitle = newSection.value;
     if (!newTitle) {
       return;

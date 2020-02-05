@@ -8,6 +8,7 @@ import {Section} from './Section';
 })
 export class SectionsService {
   serviceUrl = 'api/sections';
+  sectionReplaceUrl = '/section/replace'
 
   constructor(private http: HttpClient) {
   }
